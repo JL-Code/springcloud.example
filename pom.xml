@@ -11,6 +11,8 @@
 
     <modules>
         <module>springcloud-payment</module>
+        <module>springcloud-order</module>
+        <module>springcloud-eureka</module>
     </modules>
 
     <!--自定义属性-->

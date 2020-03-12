@@ -1,0 +1,15 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: payment-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource # 当前数据源操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver # mysql 驱动类
+    url: # mysql 数据库连接字符串
+    username:root
+    password:12345678
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package:  # 所有的 Entity 别名类所在包

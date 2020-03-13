@@ -15,7 +15,7 @@
         <dependency>
             <groupId>com.codeme.springcloud</groupId>
             <artifactId>springcloud-commons</artifactId>
-            <version>${springcloud.commons.verison}</version>
+            <version>${project.version}</version>
         </dependency>
         <!-- eureka-client-->
         <dependency>

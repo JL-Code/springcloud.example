@@ -6,7 +6,10 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class OrderController {
 
-    private final String serviceHost = "http://localhost:8001";
+    /**
+     * 客户端通过 instance-id 访问 eg: PAYMENT-SERVICE (应用注册名)
+     */
+    private final String paymentService = "http://PAYMENT-SERVICE";
     private final RestTemplate restTemplate;
 
     public OrderController(RestTemplate restTemplate) {
@@ -15,7 +18,7 @@ public class OrderController {
 
     @GetMapping("/consumer/payment/{id}")
     public String getPayment(@PathVariable String id) {
-        String result = restTemplate.getForObject(serviceHost + "/payment/" + id, String.class);
+        String result = restTemplate.getForObject(paymentService + "/payment/" + id, String.class);
         return result;
     }
 }

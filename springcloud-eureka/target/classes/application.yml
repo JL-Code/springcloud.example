@@ -9,7 +9,7 @@ eureka:
   client:
     healthcheck:
       enabled: true
-    register-with-eureka: false   # false 表示不向注册中心注册自己从而不被发现,默认为 true。
+    register-with-eureka: false   # false 表示不向注册中心注册自己从而不被发现,默认为 true (搭建集群时打开此选项)。
     fetch-registry: false # false 表示自己端就是注册中心，职责是维护服务实例，并不需要去检索服务。
     # 设置与 Eureka server 交互的地址，查询服务和注册服务都需要依赖这个地址。
     service-url:

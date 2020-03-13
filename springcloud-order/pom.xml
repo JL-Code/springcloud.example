@@ -12,6 +12,11 @@
     <artifactId>springcloud-order</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.codeme.springcloud</groupId>
+            <artifactId>springcloud-commons</artifactId>
+            <version>${springcloud.commons.verison}</version>
+        </dependency>
         <!-- eureka-client-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

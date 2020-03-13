@@ -12,6 +12,11 @@
     <artifactId>springcloud-order</artifactId>
 
     <dependencies>
+        <!-- eureka-client-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
         <!-- Web include RESTFul-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -14,7 +14,7 @@ spring:
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package:  # 所有的 Entity 别名类所在包
+  type-aliases-package: com.codeme.springcloud.payment.entities # 所有的 Entity 别名类所在包
 
 eureka:
   client:

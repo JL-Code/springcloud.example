@@ -1,13 +1,17 @@
 package com.codeme.springcloud.commons.controller;
 
 import com.codeme.springcloud.commons.util.ApiResultUtils;
-import lombok.experimental.var;
+import com.codeme.springcloud.commons.vo.ApiResultBaseVO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.lang.Nullable;
 
-@RestController
+import java.util.HashMap;
+
 public class ApiControllerBase {
+
+    public ApiControllerBase() {
+    }
 
     // region 通用的响应方法
 
@@ -16,9 +20,9 @@ public class ApiControllerBase {
      *
      * @return
      */
-    @ResponseBody
+
     public ResponseEntity ok() {
-        return ResponseEntity.ok().body(null);
+        return ok(null);
     }
 
     /**
@@ -28,8 +32,8 @@ public class ApiControllerBase {
      * @param <T>     The type of content in the entity body.
      * @return
      */
-    @ResponseBody
-    public <T> ResponseEntity<T> ok(T content) {
+
+    public <T> ResponseEntity<T> ok(@Nullable T content) {
         return ResponseEntity.ok(content);
     }
 
@@ -40,7 +44,7 @@ public class ApiControllerBase {
      * @param <T>
      * @return
      */
-    @ResponseBody
+
     public <T> ResponseEntity<T> created(T content) {
         return ResponseEntity.status(201).body(content);
     }
@@ -49,18 +53,22 @@ public class ApiControllerBase {
      * Creates an ResponseEntity (404 Not Found).
      *
      * @param errcode 错误码
-     * @param errmsg  错误文本消息
+     * @param errmsg  文本描述消息
      * @return
      */
-    @ResponseBody
+
     public ResponseEntity notFound(int errcode, String errmsg) {
-        var response = ApiResultUtils.buildResult(errcode, errmsg);
+        HashMap<String, Object> response = ApiResultUtils.buildResult(errcode, errmsg);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
 
-    @ResponseBody
+    /**
+     * Creates an ResponseEntity (404 Not Found).
+     * @param errmsg
+     * @return
+     */
     public ResponseEntity notFound(String errmsg) {
-        var response = ApiResultUtils.buildResult(404, errmsg);
+        HashMap<String, Object> response = ApiResultUtils.buildResult(400404, errmsg);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
 
@@ -68,24 +76,35 @@ public class ApiControllerBase {
      * Creates a ResponseEntity (400 Bad Request).
      *
      * @param errcode 错误码
-     * @param errmsg  错误文本消息
+     * @param errmsg  文本描述消息
      * @return
      */
-    @ResponseBody
+
     public ResponseEntity badRequest(int errcode, String errmsg) {
-        var response = ApiResultUtils.buildResult(errcode, errmsg);
+        HashMap<String, Object> response = ApiResultUtils.buildResult(errcode, errmsg);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 
     /**
      * Creates a ResponseEntity (400 Bad Request).
      *
-     * @param errmsg 错误文本消息
+     * @param errmsg 文本描述消息
      * @return
      */
-    @ResponseBody
-    public ResponseEntity badRequest(String errmsg) {
-        var response = ApiResultUtils.buildResult(HttpStatus.BAD_REQUEST.value(), errmsg);
+
+    public ResponseEntity<ApiResultBaseVO> badRequest(String errmsg) {
+        ApiResultBaseVO response = ApiResultUtils.buildApiResult(400400, errmsg);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+    }
+
+    /**
+     *
+     * @param errcode 错误码
+     * @param errmsg 文本描述消息
+     * @return
+     */
+    public ResponseEntity fail(int errcode, String errmsg) {
+        ApiResultBaseVO response = ApiResultUtils.buildApiResult(errcode, errmsg);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 

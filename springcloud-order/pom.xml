@@ -12,6 +12,7 @@
     <artifactId>springcloud-order</artifactId>
 
     <dependencies>
+        <!--springcloud-commons-->
         <dependency>
             <groupId>com.codeme.springcloud</groupId>
             <artifactId>springcloud-commons</artifactId>
@@ -21,6 +22,11 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <!--web client -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
         <!-- Web include RESTFul-->
         <dependency>

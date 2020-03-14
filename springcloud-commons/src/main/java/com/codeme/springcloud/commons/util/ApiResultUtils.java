@@ -1,7 +1,7 @@
 package com.codeme.springcloud.commons.util;
 
 import com.codeme.springcloud.commons.vo.ApiResultBaseVO;
-import lombok.experimental.var;
+import org.springframework.lang.Nullable;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -24,15 +24,18 @@ public class ApiResultUtils {
         return response;
     }
 
-    public static HashMap<String, Object> buildResult(Object data, Throwable throwable) {
+    public static HashMap<String, Object> buildResult(Throwable throwable) {
         HashMap<String, Object> response = new HashMap<>(16);
-        response.put("data", data);
         response.put("debug", getStackTrace(throwable));
         return response;
     }
 
-    public static ApiResultBaseVO buildApiResult(int errCode, String errMsg, Throwable throwable) {
-        var response = new ApiResultBaseVO();
+    public static ApiResultBaseVO buildApiResult(int errCode, String errMsg) {
+        return buildApiResult(errCode, errMsg, null);
+    }
+
+    public static ApiResultBaseVO buildApiResult(int errCode, String errMsg, @Nullable Throwable throwable) {
+        ApiResultBaseVO response = new ApiResultBaseVO();
         response.setErrcode(errCode);
         response.setErrmsg(errMsg);
         response.setError(getStackTrace(throwable));

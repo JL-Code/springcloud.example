@@ -44,38 +44,18 @@
     </dependencies>
 
     <profiles>
-        <profile>
-            <!-- 本地开发环境 -->
-            <id>7001</id>
-            <properties>
-                <profiles.active>7001</profiles.active>
-                <project.version.suffix>SNAPSHOT</project.version.suffix>
-            </properties>
-            <activation>
-                <!-- 设置默认激活这个配置 -->
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-        <profile>
-            <!-- 测试环境 -->
-            <id>7002</id>
-            <properties>
-                <profiles.active>7002</profiles.active>
-                <maven.test.skip>true</maven.test.skip>
-                <project.version.suffix>SNAPSHOT</project.version.suffix>
-            </properties>
-        </profile>
+
     </profiles>
 
     <build>
         <resources>
-<!--            <resource>-->
-<!--                <directory>src/main/resources</directory>-->
-<!--                &lt;!&ndash;排除所有配置文件&ndash;&gt;-->
-<!--                <excludes>-->
-<!--                    <exclude>application*.yml</exclude>-->
-<!--                </excludes>-->
-<!--            </resource>-->
+            <!--            <resource>-->
+            <!--                <directory>src/main/resources</directory>-->
+            <!--                &lt;!&ndash;排除所有配置文件&ndash;&gt;-->
+            <!--                <excludes>-->
+            <!--                    <exclude>application*.yml</exclude>-->
+            <!--                </excludes>-->
+            <!--            </resource>-->
             <resource>
                 <directory>src/main/resources</directory>
                 <!--包含application和指定环境配置文件，并开启filtering 替换占位符-->

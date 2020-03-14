@@ -29,11 +29,22 @@ public class OrderController extends ApiControllerBase {
         this.webClientBuilder = webClientBuilder;
     }
 
+    //    @GetMapping("/consumer/payment/{id}")
+//    public Flux<Object> getPayment(@PathVariable String id) {
+//
+//        Flux<Object> result = webClientBuilder.build()
+//                .get()
+//                .uri(paymentService + "/payment/" + id)
+//                .retrieve()
+//                .bodyToFlux(Object.class);
+//        return result;
+//    }
     @GetMapping("/consumer/payment/{id}")
     public ResponseEntity getPayment(@PathVariable String id) {
+
         try {
             ResponseEntity<ApiResultBaseVO> result = restTemplate.getForEntity(paymentService + "/payment/" + id, ApiResultBaseVO.class);
-            return ok(result);
+            return ok(result.getBody());
         } catch (Exception e) {
             return fail(500, e.getMessage());
         }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 @RestController
 public class PaymentController extends ApiControllerBase {
@@ -17,8 +18,8 @@ public class PaymentController extends ApiControllerBase {
         Payment payment = new Payment();
         payment.setId(1000L);
         payment.setSerial(100);
-        return ok(payment);
-//        return notFound("没有找到 id:" + id);
+//        return ok(payment);
+        return notFound("没有找到 id:" + id);
     }
 
 

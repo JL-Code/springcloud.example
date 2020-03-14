@@ -5,6 +5,7 @@ import com.codeme.springcloud.commons.vo.ApiResultBaseVO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
+import reactor.core.publisher.Flux;
 
 import java.util.HashMap;
 
@@ -36,6 +37,10 @@ public class ApiControllerBase {
     public <T> ResponseEntity<T> ok(@Nullable T content) {
         return ResponseEntity.ok(content);
     }
+//
+//    public <T> Flux<ResponseEntity<T>> ok(@Nullable T content) {
+//        return ResponseEntity.ok(content);
+//    }
 
     /**
      * 返回一个创建成功的响应

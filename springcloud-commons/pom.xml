@@ -12,6 +12,11 @@
     <artifactId>springcloud-commons</artifactId>
 
     <dependencies>
+        <!--webflux -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
         <!-- Web include RESTFul-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -3,15 +3,20 @@ package com.codeme.springcloud.payment.controller;
 import com.codeme.springcloud.commons.controller.ApiControllerBase;
 import com.codeme.springcloud.commons.dto.ApiResultDTO;
 import com.codeme.springcloud.payment.entities.Payment;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 @RestController
 public class PaymentController extends ApiControllerBase {
+
+    @Value("${server.port}")
+    private String serverPort;
 
     @GetMapping("/payment/{id}")
     public ResponseEntity<Payment> getPaymentById(@PathVariable String id) {
@@ -19,7 +24,7 @@ public class PaymentController extends ApiControllerBase {
         payment.setId(1000L);
         payment.setSerial(100);
 //        return ok(payment);
-        return notFound("没有找到 id:" + id);
+        return notFound("没有找到 id:" + id + "serverPort:" + serverPort);
     }
 
 

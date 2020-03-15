@@ -9,16 +9,22 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>springcloud-order</artifactId>
+    <artifactId>springcloud-ribbon-order</artifactId>
+
 
     <dependencies>
+        <!--ribbon-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+        </dependency>
         <!--springcloud-commons-->
         <dependency>
             <groupId>com.codeme.springcloud</groupId>
             <artifactId>springcloud-commons</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <!-- eureka-client 默认引入了 ribbon-->
+        <!-- eureka-client-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>

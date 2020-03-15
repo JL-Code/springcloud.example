@@ -16,7 +16,7 @@ public class ApplicationContext {
 
     // @LoadBalanced 注解开启后就可以通过微服务名称（instance-id）访问服务
     @Bean
-    @LoadBalanced
+//    @LoadBalanced
     public RestTemplate getRestTemplate() {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.setErrorHandler(new DefaultResponseErrorHandler() {

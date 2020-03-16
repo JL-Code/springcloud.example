@@ -44,8 +44,7 @@ public class TestApiControllerBase {
     @Test
     public void badRequestOfHasBasicTypeContent() {
         ResponseEntity<ApiResultBaseVO> entity = apiControllerBase.badRequest("没有找到内容");
-        System.out.println(entity.getBody());
         assertEquals(400, entity.getStatusCodeValue());
-        assertEquals(400, entity.getBody().getErrcode());
+        assertEquals(400400, entity.getBody().getErrcode());
     }
 }

@@ -3,22 +3,29 @@ package com.codeme.springcloud.payment.controller;
 import com.codeme.springcloud.commons.controller.ApiControllerBase;
 import com.codeme.springcloud.commons.dto.ApiResultDTO;
 import com.codeme.springcloud.payment.entities.Payment;
+import com.codeme.springcloud.payment.service.PaymentService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
+
 
 @RestController
+@RequiredArgsConstructor
 public class PaymentController extends ApiControllerBase {
 
+    private final PaymentService paymentService;
+
     @GetMapping("/payment/{id}")
-    public ResponseEntity<Payment> getPaymentById(@PathVariable String id) {
-        Payment payment = new Payment();
-        payment.setId(1000L);
-        payment.setSerial(100);
-//        return ok(payment);
+    public ResponseEntity<Payment> getPaymentById(@PathVariable Long id) {
+        Payment payment = paymentService.getPaymentById(id);
+        if (payment != null) {
+            return ok(payment);
+        }
         return notFound("没有找到 id:" + id);
     }
 
@@ -35,5 +42,4 @@ public class PaymentController extends ApiControllerBase {
             return null;
         }
     }
-
 }

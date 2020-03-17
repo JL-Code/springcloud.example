@@ -3,6 +3,7 @@ package com.codeme.springcloud.payment.service.impl;
 import com.codeme.springcloud.payment.entities.Payment;
 import com.codeme.springcloud.payment.service.PaymentService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,11 +13,12 @@ import org.springframework.stereotype.Service;
  * @author <a href="mailto:jiangy@highzap.com" rel="nofollow">蒋勇</a>
  * @version v1.0
  */
+@Slf4j
 @Service
-@AllArgsConstructor
 public class PaymentServiceImpl implements PaymentService {
     @Override
     public Payment getPaymentById(Long id) {
+        log.info("getPaymentById id:" + id);
         return new Payment(id, 12);
     }
 }

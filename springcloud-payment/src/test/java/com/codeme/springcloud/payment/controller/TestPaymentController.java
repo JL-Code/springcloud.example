@@ -1,15 +1,17 @@
 package com.codeme.springcloud.payment.controller;
 
-import com.codeme.springcloud.payment.service.PaymentService;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.codeme.springcloud.payment.entities.Payment;
+import com.codeme.springcloud.payment.service.impl.PaymentServiceImpl;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 /**
  * <p>描述: [类型描述] </p>
@@ -22,20 +24,24 @@ import static org.assertj.core.api.Assertions.*;
  * @WebMvcTest controllers 参数将限定 spring 上下文仅初始 PaymentController
  * 而不是所有的 Controller（减少测试的复杂度及相关依赖）。
  */
-@ExtendWith(SpringExtension.class)
-@WebMvcTest(controllers = PaymentController.class)
+//@SpringBootTest
+//@AutoConfigureMockMvc
+@WebMvcTest(PaymentController.class)
 class TestPaymentController {
 
     @Autowired
     private MockMvc mockMvc;
-    @Autowired
-    private ObjectMapper objectMapper;
-    @Autowired
-    private PaymentService paymentService;
+    @MockBean
+    private PaymentServiceImpl paymentService;
 
     @Test
     public void getPaymentByIdWhenValidInputThenReturns200() throws Exception {
         // Verifying HTTP Request Matching
-        assertThat(paymentService).isNotNull();
+        // 参数捕获器 ArgumentCaptor
+        ArgumentCaptor<Payment> paymentCaptor = ArgumentCaptor.forClass(Payment.class);
+        verify(paymentService, times(1))
+                .getPaymentById(110L);
+//        assertThat(userCaptor.getValue().getName()).isEqualTo("Zaphod");
+//        assertThat(userCaptor.getValue().getEmail()).isEqualTo("zaphod@galaxy.net");
     }
 }

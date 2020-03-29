@@ -55,7 +55,8 @@ public class OrderController extends ApiControllerBase {
     public ResponseEntity getPayment(@PathVariable String id) {
 
         try {
-            ResponseEntity<ApiResultBaseVO> result = restTemplate.getForEntity(paymentService + "/payment/" + id, ApiResultBaseVO.class);
+            ResponseEntity<ApiResultBaseVO> result = restTemplate
+                    .getForEntity(paymentService + "/payment/" + id, ApiResultBaseVO.class);
             return ok(result.getBody());
         } catch (Exception e) {
             return fail(500, e.getMessage());

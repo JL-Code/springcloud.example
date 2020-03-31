@@ -19,12 +19,15 @@ public class PaymentController extends ApiControllerBase {
     private String serverPort;
 
     @GetMapping("/payment/{id}")
-    public ResponseEntity<Payment> getPaymentById(@PathVariable String id) {
+    public ResponseEntity<Payment> getPaymentById(@PathVariable Long id) {
         Payment payment = new Payment();
         payment.setId(1000L);
         payment.setSerial(100);
-//        return ok(payment);
-        return notFound("没有找到 id:" + id + "serverPort:" + serverPort);
+        if (id > 10) {
+            return ok(payment);
+        } else {
+            return notFound("没有找到 id:" + id + "serverPort:" + serverPort);
+        }
     }
 
 

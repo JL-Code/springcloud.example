@@ -16,3 +16,4 @@ eureka:
   instance:
     instance-id: ribbon-order-service-8081 # 设置实例名称
     prefer-ip-address: true # 显示 ip 地址信息
+# feign 配置

@@ -15,6 +15,7 @@
         <module>springcloud-eureka</module>
         <module>springcloud-commons</module>
         <module>springcloud-ribbon-order</module>
+        <module>springcloud-hystrix</module>
     </modules>
 
     <!--自定义属性-->

@@ -1,7 +1,6 @@
 package com.codeme.springcloud.payment.service;
 
-import com.codeme.springcloud.payment.entities.Payment;
-import org.springframework.stereotype.Service;
+import com.codeme.springcloud.payment.entities.*;
 
 /**
  * <p>描述: [类型描述] </p>

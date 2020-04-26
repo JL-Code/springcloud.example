@@ -16,6 +16,7 @@
         <module>springcloud-commons</module>
         <module>springcloud-ribbon-order</module>
         <module>springcloud-hystrix</module>
+        <module>springcloud-nacos</module>
     </modules>
 
     <!--自定义属性-->

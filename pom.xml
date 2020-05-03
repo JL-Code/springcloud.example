@@ -17,6 +17,8 @@
         <module>springcloud-ribbon-order</module>
         <module>springcloud-hystrix</module>
         <module>springcloud-nacos</module>
+        <module>nacos-comsumer</module>
+        <module>springcloud-stentinel</module>
     </modules>
 
     <!--自定义属性-->

@@ -1,0 +1,17 @@
+server:
+  port: 9100
+spring:
+  application:
+    name: nacos-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.3.168:8848
+      config:
+        server-addr: 192.168.3.168:8848
+        file-extension: yaml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

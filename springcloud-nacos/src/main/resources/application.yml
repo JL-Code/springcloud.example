@@ -1,0 +1,15 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: springcloud-nacos-producer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.3.168:1000
+#        server-addr: 192.168.3.168:8848
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

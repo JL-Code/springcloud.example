@@ -7,9 +7,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
-    @SentinelResource("hello")
     @GetMapping("/sentinel/hello")
     public String hello() {
+        return "hello sentinel";
+    }
+
+    @GetMapping("/sentinel/hello2")
+    public String hello2() {
         return "hello sentinel";
     }
 }

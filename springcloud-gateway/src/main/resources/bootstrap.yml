@@ -10,13 +10,13 @@ spring:
           enabled: true # 启用从注册中心动态创建路由的功能
     nacos:
       config:
-        server-addr: 192.168.3.168:8848
+        server-addr: 192.168.3.168:1000
         file-extension: yaml
       discovery:
-        server-addr: 192.168.3.168:8848
+        server-addr: 192.168.3.168:1000
     sentinel:
       transport:
-        port: 9527
+        port: 8719
         dashboard: localhost:8080
   profiles:
     active: dev

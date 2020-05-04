@@ -2,12 +2,21 @@ spring:
   application:
     name: sentinel-client
   cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.3.168:1000
+
     sentinel:
       transport:
-        port: 8700
+        port: 8719
         dashboard: localhost:8080
 feign:
   sentinel:
     enabled: true
 server:
   port: 8700
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -1,10 +1,10 @@
-package com.codeme.springcloud.stentinel;
+package com.codeme.springcloud.sentinel;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringcloudStentinelApplicationTests {
+class SpringcloudSentinelApplicationTests {
 
     @Test
     void contextLoads() {

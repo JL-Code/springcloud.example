@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: route # 路由 ID
+          # uri: http://localhost:9000
+          uri: lb://springcloud-nacos-producer # 动态路由 lb://service_name
+          predicates:
+            - Path=/consumer/nacos/hello/**

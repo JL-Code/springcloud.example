@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: sentinel-client
+  cloud:
+    sentinel:
+      transport:
+        port: 8700
+        dashboard: localhost:8080
+feign:
+  sentinel:
+    enabled: true
+server:
+  port: 8700

@@ -1,13 +1,13 @@
-package com.codeme.springcloud.stentinel;
+package com.codeme.springcloud.sentinel;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringcloudStentinelApplication {
+public class SpringcloudSentinelApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringcloudStentinelApplication.class, args);
+        SpringApplication.run(SpringcloudSentinelApplication.class, args);
     }
 
 }

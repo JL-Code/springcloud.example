@@ -20,6 +20,7 @@
         <module>nacos-consumer</module>
         <module>springcloud-sentinel</module>
         <module>springcloud-gateway</module>
+        <module>springcloud-seata</module>
     </modules>
 
     <!--自定义属性-->

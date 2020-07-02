@@ -1,8 +1,8 @@
 package com.codeme.springcloud.ribbonorder.controller;
 
 import com.codeme.springcloud.commons.controller.ApiControllerBase;
-import com.codeme.springcloud.ribbonorder.entities.Payment;
-import com.codeme.springcloud.ribbonorder.service.PaymentService;
+import com.codeme.springcloud.commons.openfeign.Payment;
+import com.codeme.springcloud.commons.openfeign.PaymentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

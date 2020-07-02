@@ -23,13 +23,17 @@ public class PaymentController extends ApiControllerBase {
         Payment payment = new Payment();
         payment.setId(1000L);
         payment.setSerial(100);
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         if (id > 10) {
             return ok(payment);
         } else {
             return notFound("没有找到 id:" + id + "serverPort:" + serverPort);
         }
     }
-
 
     @GetMapping("/slow-service-tweets")
     private List<ApiResultDTO> getAllTweets() {

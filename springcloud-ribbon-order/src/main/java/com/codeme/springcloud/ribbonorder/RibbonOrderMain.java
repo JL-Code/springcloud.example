@@ -7,7 +7,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableEurekaClient
-@EnableFeignClients // 启用 Feign 注解
+// 启用 Feign 注解
+@EnableFeignClients
 public class RibbonOrderMain {
     public static void main(String[] args) {
         SpringApplication.run(RibbonOrderMain.class, args);

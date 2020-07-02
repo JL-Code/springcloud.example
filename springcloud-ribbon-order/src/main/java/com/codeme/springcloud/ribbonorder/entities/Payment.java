@@ -11,10 +11,10 @@ import lombok.NoArgsConstructor;
  * @author <a href="mailto:jiangy@highzap.com" rel="nofollow">蒋勇</a>
  * @version v1.0
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class Payment {
-    private Long id;
-    private int serial;
-}
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
+//public class Payment {
+//    private Long id;
+//    private int serial;
+//}

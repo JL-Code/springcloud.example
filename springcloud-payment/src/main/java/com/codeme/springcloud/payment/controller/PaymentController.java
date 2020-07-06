@@ -35,6 +35,16 @@ public class PaymentController extends ApiControllerBase {
         }
     }
 
+    @GetMapping("/payment/timeout")
+    public ResponseEntity<Payment> timeout() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return fail(500504, "查询超时...");
+    }
+
     @GetMapping("/slow-service-tweets")
     private List<ApiResultDTO> getAllTweets() {
         try {

@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author <a href="mailto:jiangy@highzap.com" rel="nofollow">蒋勇</a>
  * @version v1.0
  */
-@FeignClient(name = "PAYMENT-SERVICE", contextId = "commons")
+@FeignClient(name = "PAYMENT-SERVICE", contextId = "commons", configuration = {ExceptionErrorDecoder.class})
 public interface PaymentService {
     @RequestMapping(method = RequestMethod.GET, value = "/payment/{id}", consumes = "application/json")
     Payment getPaymentById(@PathVariable("id") Long id);
+
+    @RequestMapping(method = RequestMethod.GET, value = "/payment/timeout", consumes = "application/json")
+    Payment getPaymentOfTimeout();
 }

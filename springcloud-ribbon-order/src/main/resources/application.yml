@@ -22,6 +22,6 @@ eureka:
 #    enabled: true
 
 # 设置指定接口 Feign 日志级别
-#logging:
-#  level:
-#    com.codeme.springcloud.commons.openfeign.PaymentService: debug
+logging:
+  level:
+    com.codeme.springcloud.commons.openfeign.PaymentService: debug

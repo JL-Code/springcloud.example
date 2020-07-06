@@ -1,6 +1,7 @@
 package com.codeme.springcloud.commons;
 
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @version v1.0
  */
 @Configuration
+@ComponentScan
 @EnableFeignClients(basePackages = "com.codeme.springcloud.commons.openfeign")
 public class DefaultAutoConfiguration {
 }

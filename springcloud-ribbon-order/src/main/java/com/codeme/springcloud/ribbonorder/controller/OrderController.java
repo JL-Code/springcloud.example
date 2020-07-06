@@ -29,4 +29,15 @@ public class OrderController extends ApiControllerBase {
         Payment payment = paymentService.getPaymentById(id);
         return ok(payment);
     }
+
+    @GetMapping("/consumer/payment/timeout")
+    public ResponseEntity timeout() {
+        Payment payment = paymentService.getPaymentOfTimeout();
+        return ok(payment);
+    }
+
+    @GetMapping("/404")
+    public Object methodName() throws Exception {
+        throw new Exception("404");
+    }
 }

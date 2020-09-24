@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  eureka:
+    image: mecode/eureka:1.0
+    ports:
+      - 7001:7001
+  payment:
+    image: mecode/payment:1.0
+    ports:
+      - 8001:8001

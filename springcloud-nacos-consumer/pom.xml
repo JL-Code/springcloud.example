@@ -8,8 +8,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>nacos-consumer</artifactId>
-
+    <artifactId>springcloud-nacos-consumer</artifactId>
 
     <properties>
         <java.version>1.8</java.version>
@@ -57,10 +56,5 @@
             </exclusions>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-        </plugins>
-    </build>
 
 </project>

@@ -16,7 +16,7 @@ public class ExceptionErrorDecoder implements ErrorDecoder {
 
     @Override
     public Exception decode(String s, Response response) {
-
+        // TODO: 提取 response 中的 {errmsg:"",errcode:0} 信息，抛出 FeignResultException
         return null;
     }
 }

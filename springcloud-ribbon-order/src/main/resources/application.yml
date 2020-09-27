@@ -1,10 +1,8 @@
 server:
-  port: 8081
-
+  port: 9001
 spring:
   application:
     name: ribbon-order-service
-
 eureka:
   client:
     service-url:
@@ -14,14 +12,7 @@ eureka:
     # 注册到 eureka-server
     register-with-eureka: true
   instance:
-    instance-id: ribbon-order-service-8081 # 设置实例名称
+    instance-id: ribbon-order-service-9001 # 设置实例名称
     prefer-ip-address: true # 显示 ip 地址信息
-# feign 配置
-#ribbon:
-#  eager-load:
-#    enabled: true
-
-# 设置指定接口 Feign 日志级别
 logging:
-  level:
-    com.codeme.springcloud.commons.openfeign.PaymentService: debug
+  config: classpath:logback-dev.xml

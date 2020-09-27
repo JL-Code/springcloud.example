@@ -24,20 +24,20 @@ public class OrderController extends ApiControllerBase {
         this.paymentService = paymentService;
     }
 
-    @GetMapping("/consumer/payment/{id}")
+    @GetMapping("/payment/{id}")
     public ResponseEntity getPayment(@PathVariable Long id) {
         Payment payment = paymentService.getPaymentById(id);
         return ok(payment);
     }
 
-    @GetMapping("/consumer/payment/timeout")
+    @GetMapping("/payment")
+    public Long testPayment(@PathVariable Long id) {
+        return id;
+    }
+
+    @GetMapping("/payment/timeout")
     public ResponseEntity timeout() {
         Payment payment = paymentService.getPaymentOfTimeout();
         return ok(payment);
-    }
-
-    @GetMapping("/404")
-    public Object methodName() throws Exception {
-        throw new Exception("404");
     }
 }

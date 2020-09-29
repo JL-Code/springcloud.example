@@ -10,8 +10,6 @@ ENV SW_SERVICE_NAME=$DEFAULT_SERVICE_NAME
 
 ADD target/*.jar app.jar
 
-RUN ls
-
 ENTRYPOINT ["sh","-c","java -javaagent:/skywalking/agent/skywalking-agent.jar -Dskywalking.agent\
 .service_name=$SW_SERVICE_NAME -Dskywalking.collector.backend_service=$SW_AGENT_SERVICE -jar app.jar"]
 

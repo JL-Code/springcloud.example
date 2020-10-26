@@ -1,3 +1,3 @@
-docker-compose down
+docker-compose --env-file .env.development down
 docker-compose  --env-file .env.development up -d
-docker-compose ps
+docker-compose --env-file .env.developgiment ps

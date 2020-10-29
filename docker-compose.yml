@@ -1,34 +1,36 @@
 version: "3.8"
 services:
   eureka:
-    image: ${REGISTRY}/mecode/springcloud-eureka
+    image: ${registry}mecode/springcloud-eureka
     #    container_name: eureka
     ports:
       - "7001:7001" #<HOST IP> : <CONTAINER IP>
-    environment:
-      - EUREKA_CLIENT_SERVICE=http://192.168.99.101:7001/eureka/
+    env_file:
+      - dockerhub.env
     deploy:
       mode: replicated
       replicas: 1
   order:
-    image: ${REGISTRY}/mecode/springcloud-ribbon-order
+    image: ${registry}mecode/springcloud-ribbon-order
     #    container_name: order
     ports:
       - "6001:6001" #<HOST IP> : <CONTAINER IP>
-    environment:
-      - EUREKA_CLIENT_SERVICE=http://192.168.99.101:7001/eureka/
-      - JAVA_OPTS=-Dspring.cloud.inetutils.preferred-networks=192.168.99
+    env_file:
+      - dockerhub.env
+    depends_on:
+      - eureka
     deploy:
       mode: replicated
-      replicas: 3
+      replicas: 2
   payment:
-    image: ${REGISTRY}/mecode/springcloud-payment
+    image: ${registry}mecode/springcloud-payment
     #    container_name: payment
     ports:
       - "8001:8001" #<HOST IP> : <CONTAINER IP>
-    environment:
-      - EUREKA_CLIENT_SERVICE=http://192.168.99.101:7001/eureka/
-      - JAVA_OPTS=-Dspring.cloud.inetutils.preferred-networks=192.168.99
+    env_file:
+      - dockerhub.env
+    depends_on:
+      - eureka
     deploy:
       mode: replicated
-      replicas: 3
+      replicas: 2

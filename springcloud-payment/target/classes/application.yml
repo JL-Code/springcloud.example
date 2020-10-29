@@ -25,6 +25,7 @@ eureka:
     fetch-registry: true
     # 注册到 eureka-server
     register-with-eureka: true
+    eureka-server-connect-timeout-seconds: 10
   instance:
     instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port} # 设置实例名称
     prefer-ip-address: true # 显示 ip 地址信息

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.codeme.springcloud</groupId>
-    <artifactId>springcloud</artifactId>
+    <artifactId>springcloud-micro</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
 
@@ -46,7 +46,8 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <dockerfile.maven.version>1.4.13</dockerfile.maven.version>
-        <docker.repository>192.168.3.81:9001</docker.repository>
+        <docker.registry>192.168.3.81:9001/</docker.registry>
+        <docker.namespace>mecode/</docker.namespace>
         <revision>latest</revision>
     </properties>
 
@@ -151,10 +152,9 @@
                         </execution>
                     </executions>
                     <configuration>
-                        <repository>${docker.repository}/mecode/${project.artifactId}</repository>
+                        <repository>${docker.registry}${docker.namespace}${project.artifactId}</repository>
                         <tag>${project.version}</tag>
-                        <username>devops</username>
-                        <password>devops</password>
+                        <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
                         <buildArgs>
                             <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
                         </buildArgs>

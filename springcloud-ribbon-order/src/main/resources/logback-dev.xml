@@ -1,5 +1,5 @@
 <configuration>
-    <property name="log.root" value="/Users/codeme/Downloads/log/order/logs"/>
+    <property name="log.root" value="/var/log/ribbon-order"/>
     <!-- %m输出的信息,%p日志级别,%t线程名,%d日期,%c类的全名,%i索引【从数字0开始递增】,,, -->
     <!-- appender是configuration的子节点，是负责写日志的组件。 -->
     <!-- RollingFileAppender：滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件 -->

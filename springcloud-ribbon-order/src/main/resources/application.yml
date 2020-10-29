@@ -1,5 +1,5 @@
 server:
-  port: 9001
+  port: 6001
 spring:
   application:
     name: ribbon-order-service
@@ -12,7 +12,7 @@ eureka:
     # 注册到 eureka-server
     register-with-eureka: true
   instance:
-    instance-id: ribbon-order-service-9001 # 设置实例名称
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port} # 设置实例名称
     prefer-ip-address: true # 显示 ip 地址信息
 logging:
   config: classpath:logback-dev.xml

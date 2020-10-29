@@ -5,11 +5,10 @@
     <parent>
         <artifactId>springcloud</artifactId>
         <groupId>com.codeme.springcloud</groupId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>springcloud-sentinel</artifactId>
-    <packaging>jar</packaging>
 
     <dependencies>
         <!--sentinel 服务治理-->

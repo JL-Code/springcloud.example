@@ -6,7 +6,7 @@
 
     <groupId>com.codeme.springcloud</groupId>
     <artifactId>springcloud</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
 
     <parent>
@@ -45,11 +45,19 @@
         <java.version>1.8</java.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <dockerfile.maven.version>1.4.13</dockerfile.maven.version>
+        <docker.repository>192.168.3.81:9001</docker.repository>
+        <revision>latest</revision>
     </properties>
 
     <!--为 module 固化赖版本号，统一管理-->
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.codeme.springcloud</groupId>
+                <artifactId>springcloud-commons</artifactId>
+                <version>${revision}</version>
+            </dependency>
             <!--spring cloud Hoxton.SR1-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
@@ -98,4 +106,61 @@
         </dependencies>
     </dependencyManagement>
 
+    <build>
+        <plugins>
+            <plugin>
+                <!-- https://maven.apache.org/maven-ci-friendly.html -->
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>dockerfile-maven-plugin</artifactId>
+                    <version>${dockerfile.maven.version}</version>
+                    <executions>
+                        <execution>
+                            <id>default</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>build</goal>
+                                <goal>push</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <repository>${docker.repository}/mecode/${project.artifactId}</repository>
+                        <tag>${project.version}</tag>
+                        <username>devops</username>
+                        <password>devops</password>
+                        <buildArgs>
+                            <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+                        </buildArgs>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>

@@ -28,7 +28,7 @@ public class PaymentController extends ApiControllerBase {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        if (id > 10) {
+        if (id > 100) {
             return ok(payment);
         } else {
             return notFound("没有找到 id:" + id + "serverPort:" + serverPort);

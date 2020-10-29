@@ -4,18 +4,18 @@ server:
 spring:
   application:
     name: payment-service
-  datasource:
-    type: com.alibaba.druid.pool.DruidDataSource # 当前数据源操作类型
-    driver-class-name: org.gjt.mm.mysql.Driver # mysql 驱动类
-    # mysql 数据库连接字符串
-#    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
-    url: jdbc:mysql://127.0.0.1:3306/nacos_config?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true
-    username: root
-    password: 12345678
+#  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource # 当前数据源操作类型
+#    driver-class-name: org.gjt.mm.mysql.Driver # mysql 驱动类
+#    # mysql 数据库连接字符串
+##    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#    url: jdbc:mysql://127.0.0.1:3306/nacos_config?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true
+#    username: root
+#    password: 12345678
 
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.codeme.springcloud.payment.entities # 所有的 Entity 别名类所在包
+#mybatis:
+#  mapper-locations: classpath:mapper/*.xml
+#  type-aliases-package: com.codeme.springcloud.payment.entities # 所有的 Entity 别名类所在包
 
 eureka:
   client:
@@ -26,5 +26,5 @@ eureka:
     # 注册到 eureka-server
     register-with-eureka: true
   instance:
-    instance-id: payment-service-8001 # 设置实例名称
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port} # 设置实例名称
     prefer-ip-address: true # 显示 ip 地址信息

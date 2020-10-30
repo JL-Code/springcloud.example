@@ -2,7 +2,7 @@ FROM centos:7.8.2003
 
 RUN set -x \
     && yum update -y \
-    && yum install -y java-1.8.0-openjdk iputils telnet curl
+    && yum install -y java-1.8.0-openjdk iputils telnet curl lsof net-tools iproute2
 
 ARG JAR_FILE="springcloud-payment-latest.jar"
 

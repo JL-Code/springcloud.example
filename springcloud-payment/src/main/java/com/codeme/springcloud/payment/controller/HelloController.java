@@ -1,7 +1,14 @@
 package com.codeme.springcloud.payment.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.*;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <p>创建时间: 2020/10/26 </p>
@@ -12,8 +19,39 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
+
+    @Autowired
+    Environment env;
+
+    @Value("${eureka.client.service-url.defaultZone}")
+    private String defaultZone;
+
     @GetMapping("/hello")
-    public String getHello() {
-        return "hello for payment";
+    public Object hello() {
+        return "hello for ribbon order defaultZone: " + defaultZone;
+    }
+
+    @GetMapping("/properties/{key}")
+    public Object hello(@PathVariable String key) {
+        return key + ": " + env.getProperty(key);
+    }
+
+
+    @GetMapping("/properties")
+    public Map<String, Object> allProperties() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("activeProfiles", env.getActiveProfiles());
+        map.put("defaultProfiles", env.getDefaultProfiles());
+
+        MutablePropertySources sources = ((AbstractEnvironment) env).getPropertySources();
+        for (PropertySource<?> source : sources) {
+            if (source instanceof EnumerablePropertySource) {
+                EnumerablePropertySource propertySource = (EnumerablePropertySource) source;
+                for (String s : propertySource.getPropertyNames()) {
+                    map.put(s, propertySource.getProperty(s));
+                }
+            }
+        }
+        return map;
     }
 }

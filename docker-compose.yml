@@ -1,36 +1,32 @@
 version: "3.8"
 services:
   eureka:
-    image: ${registry}mecode/springcloud-eureka
+    image: registry.cn-chengdu.aliyuncs.com/mecode/springcloud-eureka
     #    container_name: eureka
     ports:
       - "7001:7001" #<HOST IP> : <CONTAINER IP>
     env_file:
-      - dockerhub.env
+      - aliyun.env
     deploy:
       mode: replicated
       replicas: 1
   order:
-    image: ${registry}mecode/springcloud-ribbon-order
+    image: registry.cn-chengdu.aliyuncs.com/mecode/springcloud-ribbon-order
     #    container_name: order
     ports:
       - "6001:6001" #<HOST IP> : <CONTAINER IP>
     env_file:
-      - dockerhub.env
-    depends_on:
-      - eureka
+      - aliyun.env
     deploy:
       mode: replicated
       replicas: 2
   payment:
-    image: ${registry}mecode/springcloud-payment
+    image: registry.cn-chengdu.aliyuncs.com/mecode/springcloud-payment
     #    container_name: payment
     ports:
       - "8001:8001" #<HOST IP> : <CONTAINER IP>
     env_file:
-      - dockerhub.env
-    depends_on:
-      - eureka
+      - aliyun.env
     deploy:
       mode: replicated
       replicas: 2

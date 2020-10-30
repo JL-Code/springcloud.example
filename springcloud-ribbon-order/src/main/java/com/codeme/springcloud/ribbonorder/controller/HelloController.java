@@ -2,8 +2,10 @@ package com.codeme.springcloud.ribbonorder.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.*;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -22,11 +24,19 @@ public class HelloController {
     @Autowired
     Environment env;
 
+    @Value("${eureka.client.service-url.defaultZone}")
+    private String defaultZone;
+
     @GetMapping("/hello")
     public Object hello() {
-        log.error("hello error");
-        return "hello for ribbon order";
+        return "hello for ribbon order defaultZone: " + defaultZone;
     }
+
+    @GetMapping("/properties/{key}")
+    public Object hello(@PathVariable String key) {
+        return key + ": " + env.getProperty(key);
+    }
+
 
     @GetMapping("/properties")
     public Map<String, Object> allProperties() {

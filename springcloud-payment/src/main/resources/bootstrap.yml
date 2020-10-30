@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: springcloud-payment
+  cloud:
+    nacos:
+      config: # 此配置新应在容器部署时从环境变量中获取。
+        group: DEFAULT_GROUP
+        server-addr: localhost:8848
+        file-extension: yml
+        namespace: public # 可省略不写，默认为 public
+        #name:  可省略不写，默认取 spring.application.name 的值。

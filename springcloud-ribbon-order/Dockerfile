@@ -1,9 +1,13 @@
-FROM openjdk:8-jdk-alpine
+FROM centos:7.8.2003
 
-ARG JAR_FILE
+RUN set -x \
+    && yum update -y \
+    && yum install -y java-1.8.0-openjdk iputils telnet curl
 
-ADD target/*.jar app.jar
+ARG JAR_FILE="springcloud-ribbon-order-latest.jar"
 
-ENV EUREKA_CLIENT_SERVICE="http://127.0.0.1:7001/eureka/";
+ADD target/${JAR_FILE} app.jar
 
-ENTRYPOINT ["sh","-c","java -jar app.jar --eureka.client.service-url.defaultZone=${EUREKA_CLIENT_SERVICE}"]
+ENV EUREKA_DEFAULT_ZONE="http://127.0.0.1:7001/eureka/";
+
+ENTRYPOINT ["sh","-c","java -jar app.jar --eureka.client.service-url.defaultZone=${EUREKA_DEFAULT_ZONE}"]

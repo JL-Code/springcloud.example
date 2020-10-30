@@ -24,9 +24,12 @@ public class HelloController {
     @Value("${eureka.instance.hostname}")
     private String hostname;
 
+    @Value("${eureka.client.service-url.defaultZone}")
+    private String defaultZone;
+
     @GetMapping("/hello")
     public Object hello() {
-        return "hello for eureka hostname：" + hostname;
+        return "hello for eureka hostname：" + hostname + " defaultZone: " + defaultZone;
     }
 
     @GetMapping("/properties")

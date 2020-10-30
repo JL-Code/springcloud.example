@@ -1,9 +1,8 @@
 server:
   port: 8001
-
 spring:
   application:
-    name: payment-service
+    name: springcloud-payment
 #  datasource:
 #    type: com.alibaba.druid.pool.DruidDataSource # 当前数据源操作类型
 #    driver-class-name: org.gjt.mm.mysql.Driver # mysql 驱动类
@@ -20,7 +19,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:7001/eureka/
+      defaultZone: http://10.37.129.13:7001/eureka/
       # 是否从 eureka-server 抓取已有注册信息，默认为 true 。单节点无所谓，集群必须设置为 true 才能配合 ribbon 使用负载均衡。
     fetch-registry: true
     # 注册到 eureka-server

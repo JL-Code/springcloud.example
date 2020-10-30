@@ -46,7 +46,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <dockerfile.maven.version>1.4.13</dockerfile.maven.version>
-        <docker.registry>192.168.3.81:9001/</docker.registry>
+        <docker.registry>registry.cn-chengdu.aliyuncs.com/</docker.registry>
         <docker.namespace>mecode/</docker.namespace>
         <revision>latest</revision>
     </properties>

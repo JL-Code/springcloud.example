@@ -48,7 +48,7 @@
         <dockerfile.maven.version>1.4.13</dockerfile.maven.version>
         <docker.registry>registry.cn-chengdu.aliyuncs.com/</docker.registry>
         <docker.namespace>mecode/</docker.namespace>
-        <revision>latest</revision>
+        <revision>nacos</revision>
     </properties>
 
     <!--为 module 固化赖版本号，统一管理-->

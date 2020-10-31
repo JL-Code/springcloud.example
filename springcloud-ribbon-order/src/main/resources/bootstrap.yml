@@ -12,5 +12,5 @@ spring:
     inetutils:
       ignored-interfaces:
         - eth0 # 忽略 eth0 网卡
-      use-only-site-local-interfaces: true #
-      preferred-networks: 10.0.5.*
+        - eth2
+      use-only-site-local-interfaces: false #

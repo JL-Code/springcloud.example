@@ -8,6 +8,6 @@ ARG JAR_FILE="springcloud-payment-latest.jar"
 
 ADD target/${JAR_FILE} app.jar
 
-ENV EUREKA_DEFAULT_ZONE="http://127.0.0.1:7001/eureka/";
+ENV NACOS_CONFIG_SERVER_ADDR=192.168.3.67:8848
 
-ENTRYPOINT ["sh","-c","java -jar app.jar --eureka.client.service-url.defaultZone=${EUREKA_DEFAULT_ZONE}"]
+ENTRYPOINT ["sh","-c","java -jar app.jar --spring.cloud.nacos.config.server-addr=$NACOS_CONFIG_SERVER_ADDR"]

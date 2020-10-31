@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author <a href="mailto:jiangy@highzap.com" rel="nofollow">蒋勇</a>
  * @version v1.0
  */
-@FeignClient(name = "PAYMENT-SERVICE", contextId = "commons")
+@FeignClient(name = PaymentService.SERVICE_NAME, contextId = "commons")
 public interface PaymentService {
+    String SERVICE_NAME = "SPRINGCLOUD-PAYMENT";
+
     @RequestMapping(method = RequestMethod.GET, value = "/payment/{id}", consumes = "application/json")
     Payment getPaymentById(@PathVariable("id") Long id);
 

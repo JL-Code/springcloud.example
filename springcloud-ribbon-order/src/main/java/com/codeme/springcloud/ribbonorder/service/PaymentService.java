@@ -14,7 +14,7 @@ package com.codeme.springcloud.ribbonorder.service;
  * @author <a href="mailto:jiangy@highzap.com" rel="nofollow">蒋勇</a>
  * @version v1.0
  */
-//@FeignClient("PAYMENT-SERVICE")
+//@FeignClient("SPRINGCLOUD-PAYMENT")
 //public interface PaymentService {
 //    @RequestMapping(method = RequestMethod.GET, value = "/payment/{id}", consumes = "application/json")
 //    Payment getPaymentById(@PathVariable("id") Long id);

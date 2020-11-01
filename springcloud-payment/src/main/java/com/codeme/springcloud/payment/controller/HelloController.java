@@ -1,7 +1,6 @@
 package com.codeme.springcloud.payment.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,12 +22,9 @@ public class HelloController {
     @Autowired
     Environment env;
 
-    @Value("${eureka.client.service-url.defaultZone}")
-    private String defaultZone;
-
     @GetMapping("/hello")
     public Object hello() {
-        return "hello for ribbon order defaultZone: " + defaultZone;
+        return "hello for ribbon order";
     }
 
     @GetMapping("/properties/{key}")

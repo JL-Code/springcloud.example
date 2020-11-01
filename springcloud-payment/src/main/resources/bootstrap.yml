@@ -9,8 +9,8 @@ spring:
         file-extension: yml
         namespace: public # 可省略不写，默认为 public
         #name:  可省略不写，默认取 spring.application.name 的值。
-      discovery:
-        server-addr: localhost:8848
+#      discovery:
+#        server-addr: localhost:8848
 #    inetutils:
 #      ignored-interfaces:
 #        - eth0 # 忽略 eth0 网卡

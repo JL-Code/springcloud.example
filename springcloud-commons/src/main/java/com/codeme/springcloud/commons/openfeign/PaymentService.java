@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @FeignClient(name = PaymentService.SERVICE_NAME, contextId = "commons")
 public interface PaymentService {
-    String SERVICE_NAME = "SPRINGCLOUD-PAYMENT";
+    // nacos config 和 discovery 区分服务名大小写
+    String SERVICE_NAME = "springcloud-payment";
 
     @RequestMapping(method = RequestMethod.GET, value = "/payment/{id}", consumes = "application/json")
     Payment getPaymentById(@PathVariable("id") Long id);

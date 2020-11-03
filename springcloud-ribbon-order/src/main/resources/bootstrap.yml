@@ -14,3 +14,5 @@ spring:
         - eth0 # 忽略 eth0 网卡
         - eth2
       use-only-site-local-interfaces: false #
+  profiles:
+    active: eureka

@@ -6,7 +6,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:7001/eureka/
+      defaultZone: http://192.168.99.101:7001/eureka/
       # 是否从 eureka-server 抓取已有注册信息，默认为 true 。单节点无所谓，集群必须设置为 true 才能配合 ribbon 使用负载均衡。
     fetch-registry: true
     register-with-eureka: true

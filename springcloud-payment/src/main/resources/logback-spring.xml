@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!--  https://github.com/logstash/logstash-logback-encoder  -->
+    <springProperty scope="context" name="name" source="spring.application.name"></springProperty>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <!--配置logStash 服务地址-->
+        <destination>192.168.3.183:5000</destination>
+        <!-- 日志输出编码 -->
+<!--        <encoder charset="UTF-8"-->
+<!--                 class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">-->
+<!--            <providers>-->
+<!--                <timestamp>-->
+<!--                    <timeZone>UTC</timeZone>-->
+<!--                </timestamp>-->
+<!--                <pattern>-->
+<!--                   <pattern>-->
+<!--                       {-->
+<!--                       "logLevel": "%level",-->
+<!--                       "serviceName": "${name:-}",-->
+<!--                       "pid": "${PID:-}",-->
+<!--                       "thread": "%thread",-->
+<!--                       "class": "%logger{40}",-->
+<!--                       "rest": "%message"-->
+<!--                       }-->
+<!--                   </pattern>-->
+<!--                </pattern>-->
+<!--            </providers>-->
+<!--        </encoder>-->
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>
+                {
+                "logLevel": "%level",
+                "serviceName": "${name:-}",
+                "name": "${name:-}",
+                "pid": "${PID:-}",
+                "thread": "%thread",
+                "class": "%logger{40}",
+                "rest": "%message"
+                }
+            </customFields>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="LOGSTASH"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>
+

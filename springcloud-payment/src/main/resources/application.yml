@@ -6,5 +6,4 @@ spring:
   cloud:
     nacos:
       discovery:
-        # 注册指定的网卡：https://github.com/alibaba/nacos/issues/310
         network-interface: eth1

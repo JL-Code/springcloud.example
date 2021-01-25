@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+    <springProperty scope="context" name="app_name" source="spring.application.name"/>
+
     <appender name="stash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
         <destination>127.0.0.1:5000</destination>
 
         <!-- encoder is required -->
-        <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <!--传送自定义字段-->
+            <customFields>{"app_name":"${app_name}"}</customFields>
+        </encoder>
     </appender>
-
+    <!--引用springboot默认配置（用于本地开发时调试窗口输出）-->
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
     <root level="INFO">
-        <appender-ref ref="stash" />
+        <appender-ref ref="stash"/>
+        <!--用于本地开发时调试窗口输出-->
+        <appender-ref ref="CONSOLE"/>
     </root>
 </configuration>
